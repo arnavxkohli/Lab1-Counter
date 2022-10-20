@@ -20,3 +20,13 @@
     ![counter code block](images-task1/counter-svcode.png)
 
     The code for the counter was implemented as shown by the module shown above.
+
+    Some things to note are:
+        - The file name and the module name are the same.
+        - The number of bits in the counter is specified with the parameter WIDTH. It is currently set to 8-bit. This allows me to dynamically change the number of bits as needed and generate an n-bit counter as needed in the future.
+        - The always_ff @ (posedge clk) is the way that one specifies a clocked circuit.
+        - ‘<=’ in line 12 and 13 are non-block assignments which should be used within an always_ff block. Non blocking assignments ensure that the circuit is synthesized parallelly instead of sequentially (refer to notes for the reason).
+        - {WIDTH{1’b0}} in line 12 uses the concatenation operator { } to form WIDTH bits of ‘0’.
+        - How it works is, the code ensures that the current value of the counter is updated to count + 0000000 + en where en is the LSB. Here, 1 is added to the existing value of count everytime enable goes high. Until and unless en goes high, the count stays at the same value (unless reset is called).
+            ![how the counter works](images-task1/counter-work.png)
+
