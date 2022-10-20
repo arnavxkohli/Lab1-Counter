@@ -31,3 +31,6 @@ Steps followed:
   - How it works is, the code ensures that the current value of the counter is updated to count + 0000000 + en where en is the **LSB**. Here, 1 is added to the existing value of count everytime en goes **high**. Until and unless en goes high, the count stays at the same value (unless reset is called).
   ![how the counter works](images-task1/counter-work.png)
 
+---
+## Step 4:
+
