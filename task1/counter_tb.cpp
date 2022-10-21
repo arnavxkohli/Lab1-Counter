@@ -29,8 +29,11 @@ int main(int argc, char **argv, char **env){
             top->clk = !top->clk;
             top->eval ();
         }
-        top->rst = (i <2) | (i == 15);
+        top->rst = (i <2) | (i == 17);
         top->en = (i>4);
+        if(i == 14 || i == 15 || i == 16){
+            top->en = 0;
+        }
         if(Verilated::gotFinish())  exit(0);
     }
     tfp->close();

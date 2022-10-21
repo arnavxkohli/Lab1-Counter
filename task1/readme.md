@@ -68,3 +68,15 @@ The output from the vcd file on gtkwave was:
 
   **Why is the time axis in ps? Does it matter?**
 
+## Challenge 1: Modify the testbench so that you stop counting for 3 cycles once the counter reaches 0x9, and then resume counting.
+  Implementing this challenge required me to change the stimuli for the enable and the reset block. The code for it as shown below:
+
+  ![code for challenge 1](images-task1/codechallenge1.png)
+
+  When the counter reaches cycle 13 (at 0x09), from the next three cycles (**i = 14, 15 & 16**); the enable input is at 0, thus holding the counter at the spot for three more clock cycles and then resetting to 0 from the next clock cycle (17).
+
+  The simulation for the code proves that it works:
+
+  ![simulation for challenge 1](images-task1/challenge1.png)
+
+
