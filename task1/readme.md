@@ -36,10 +36,35 @@ Steps followed:
 ## Step 4: Create the testbench file counter_tb.cpp in C++ using VS Code.
   This step involved creating the testbench file **counter_tb.cpp**(check file directory). The testbench works as a wrapper above the system verilog code for gtkwave and the subsequent simulation on **Vbuddy**.This testbench file is a template for all other testbench files. It consists of various sections, which are mandatory(except for the trace dump section in case waveforms aren't needed).
 
-  ![how the counter works](images-task1/countertb.png)
+  ![testbench for counter](images-task1/countertb.png)
 
   The figure above explains the process of creating the test bench.
 
 ## Step 5: Compile the System Verilog model with the testbench.
   A shortcut to performing this step is writing a shell script which runs the required commands to create the vcd file as well as run it.
+
+  ![shell script for vcd creation](images-task1/shellscript.png)
+
+  The shell script above can be ran by executing
+
+  ```bash
+  source ./doit.sh
+  ```
+
+  or alternatively, after changing permissions using ***chmod +x doit.sh***:
+
+   ```bash
+  ./doit.sh
+   ```
+  
+## Step 6: Plot the counter waveforms with GTKwave.
+To implement this step, I had to install XMing and run an Xserver because gtkwave would not open on my windows machine. runs on a computer with a graphical display and communicates with various client programs. The server accepts requests for graphical output (windows) and sends back user input (keyboard, mouse). The Xserver creates a graphical interface in case it fails for whatever reason.
+
+The output from the vcd file on gtkwave was:
+
+  ![waveform output](images-task1/gtkwavesim.png)
+
+  The counter counts up to 10 and then resets.
+
+  **Why is the time axis in ps? Does it matter?**
 
