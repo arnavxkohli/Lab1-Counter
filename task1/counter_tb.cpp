@@ -26,6 +26,7 @@ int main(int argc, char **argv, char **env){
         //dump variables into VCD file and toggle clock
         for(clk=0; clk<2; clk++){
             tfp->dump (2*i+clk); //unit is in ps
+            top->clk = !top->clk;
             top->eval ();
         }
         top->rst = (i<2) | (i == 15);
