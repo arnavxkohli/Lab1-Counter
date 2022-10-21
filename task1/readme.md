@@ -79,4 +79,5 @@ The output from the vcd file on gtkwave was:
 
   ![simulation for challenge 1](images-task1/challenge1.png)
 
+## Challenge 2: Implement and asynchronous reset.
 
