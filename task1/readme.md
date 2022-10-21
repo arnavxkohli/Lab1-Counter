@@ -34,7 +34,7 @@ Steps followed:
 
 ---
 ## Step 4: Create the testbench file counter_tb.cpp in C++ using VS Code.
-  This step involved creating the testbench file **counter_tb.cpp**(check file directory). The testbench works as a wrapper above the system verilog code for gtkwave and the subsequent simulation on **Vbuddy**.This testbench file is a template for all other testbench files. It consists of various sections, which are mandatory(except for the trace dump section in case waveforms aren't needed).
+  This step involved creating the testbench file **counter_tb.cpp**(check file directory). The testbench works as a wrapper above the system verilog code for gtkwave and the subsequent simulation on **Vbuddy**. This testbench file is a template for all other testbench files. It consists of various sections, which are mandatory (except for the trace dump section in case waveforms aren't needed).
 
   ![testbench for counter](images-task1/countertb.png)
 
@@ -58,7 +58,7 @@ Steps followed:
    ```
   
 ## Step 6: Plot the counter waveforms with GTKwave.
-To implement this step, I had to install XMing and run an Xserver because gtkwave would not open on my windows machine. runs on a computer with a graphical display and communicates with various client programs. The server accepts requests for graphical output (windows) and sends back user input (keyboard, mouse). The Xserver creates a graphical interface in case it fails for whatever reason.
+To implement this step, I had to install XMing and run an Xserver because gtkwave would not open on my windows machine. An Xserver runs on a computer with a graphical display and communicates with various client programs. The server accepts requests for graphical output (windows) and sends back user input (keyboard, mouse). The Xserver creates a graphical interface in case it fails for whatever reason.
 
 The output from the vcd file on gtkwave was:
 
