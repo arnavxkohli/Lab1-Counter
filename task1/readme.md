@@ -66,7 +66,7 @@ The output from the vcd file on gtkwave was:
 
   The counter counts up to 10 and then resets.
 
-  **Why is the time axis in ps? Does it matter?**
+  The time axis is in picoseconds because of the vcd file and gtkwave. The gtkwave has 1 pico second as a timescale. Timing does not matter in the case of verilator because it is cycle accurate.
 
 ## Challenge 1: Modify the testbench so that you stop counting for 3 cycles once the counter reaches 0x9, and then resume counting.
   Implementing this challenge required me to change the stimuli for the enable and the reset block. The code for it as shown below:
