@@ -73,11 +73,11 @@ The output from the vcd file on gtkwave was:
 
   ![code for challenge 1](images-task1/codechallenge1.png)
 
-  When the counter reaches cycle 13 (at 0x09), from the next three cycles (**i = 14, 15 & 16**); the enable input is at 0, thus holding the counter at the spot for three more clock cycles and then resetting to 0 from the next clock cycle (17).
+  When the counter reaches cycle 13 (at 0x09), from the next two cycles (**i = 14 & 15**); the enable input is at 0, thus holding the counter at the spot for two more clock cycles and then resetting to 0 from the next clock cycle (16).
 
   The simulation for the code proves that it works:
 
   ![simulation for challenge 1](images-task1/challenge1.png)
 
-## Challenge 2: Implement and asynchronous reset.
+## Challenge 2: Implement an asynchronous reset.
 
