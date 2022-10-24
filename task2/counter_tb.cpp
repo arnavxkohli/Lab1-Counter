@@ -28,7 +28,7 @@ int main(int argc, char **argv, char **env) {
     top->en = 0;
     
     // run simulation
-    for (i = 0; i < 2000; i++) {
+    for (i = 0; i < 500; i++) {
         // dump data & toggle clock
         for (clk = 0; clk < 2; clk++) {
             tfp->dump(2*i+clk);
@@ -37,14 +37,16 @@ int main(int argc, char **argv, char **env) {
         }
 
         // 7-seg disp: send data to vbuddy
-        vbdHex(4, (int(top->count) >> 16) & 0xF);
-        vbdHex(3, (int(top->count) >> 8) & 0xF);
-        vbdHex(2, (int(top->count) >> 4) & 0xF);
-        vbdHex(1, int(top->count) & 0xF);
-        vbdCycle(i++);
+        // vbdHex(4, (int(top->count) >> 16) & 0xF);
+        // vbdHex(3, (int(top->count) >> 8) & 0xF);
+        // vbdHex(2, (int(top->count) >> 4) & 0xF);
+        // vbdHex(1, int(top->count) & 0xF);
+        // vbdCycle(i++);
+
+        vbdPlot(int(top->count), 0, 255);
 
         // test pattern
-        top->rst = false;
+        top->rst = (i == 15 | i == 30);
         top->en = vbdFlag();
         if (Verilated::gotFinish()) exit(0);
     }
