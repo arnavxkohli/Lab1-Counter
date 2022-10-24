@@ -3,52 +3,53 @@
 #include "verilated_vcd_c.h"
 #include "vbuddy.cpp"
 
-int main(int argc, char **argv, char **env){
+int main(int argc, char **argv, char **env) {
     int i;
     int clk;
 
     Verilated::commandArgs(argc, argv);
-    //init top verilog instance
+    
+    // initiate top-level design
     Vcounter* top = new Vcounter;
-    //init trace dump
+
+    // initiate trace
     Verilated::traceEverOn(true);
     VerilatedVcdC* tfp = new VerilatedVcdC;
-    top->trace (tfp, 99);
-    tfp-> open ("counter.vcd");
+    top->trace(tfp, 99);
+    tfp->open("counter.vcd");
 
-    //init Vbuddy
-    if(vbdOpen()!=1) return (-1);
-    vbdHeader("Lab1: Counter");
-
-    //initialize simulation inputs
+    // initiate vbuddy
+    if (vbdOpen() != true) return(-1);
+    vbdHeader("Lab 1: Counter");
+    
+    // initiate simulation inputs
     top->clk = 1;
     top->rst = 1;
     top->en = 0;
-
-    //run simulation for many clock cycles
-    for(i=0; i<300; i++){
-
-        //dump variables into VCD file and toggle clock
-        for(clk=0; clk<2; clk++){
-            tfp->dump (2*i+clk); //unit is in ps
+    
+    // run simulation
+    for (i = 0; i < 2000; i++) {
+        // dump data & toggle clock
+        for (clk = 0; clk < 2; clk++) {
+            tfp->dump(2*i+clk);
             top->clk = !top->clk;
-            top->eval ();
+            top->eval();
         }
 
-        //Send count value to Vbuddy
-        vbdHex(4, (int(top->count) >> 16) & 0xF); 
-        vbdHex(3, (int(top->count) >> 8) & 0xF); 
-        vbdHex(2, (int(top->count) >> 4) & 0xF); 
+        // 7-seg disp: send data to vbuddy
+        vbdHex(4, (int(top->count) >> 16) & 0xF);
+        vbdHex(3, (int(top->count) >> 8) & 0xF);
+        vbdHex(2, (int(top->count) >> 4) & 0xF);
         vbdHex(1, int(top->count) & 0xF);
-        vbdCycle(i+1);
-        // ----end of Vbuddy output section
+        vbdCycle(i++);
 
-        //change input stimuli
-        top->rst = (i <2) | (i == 15);
+        // test pattern
+        top->rst = false;
         top->en = vbdFlag();
-        if(Verilated::gotFinish())  exit(0);
+        if (Verilated::gotFinish()) exit(0);
     }
 
+    // house keeping
     vbdClose();
     tfp->close();
     exit(0);
