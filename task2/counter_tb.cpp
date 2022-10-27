@@ -36,13 +36,13 @@ int main(int argc, char **argv, char **env) {
             top->eval();
         }
 
-        vbdHex(4, (int(top->count) >> 16) & 0xF);
-        vbdHex(3, (int(top->count) >> 8) & 0xF);
-        vbdHex(2, (int(top->count) >> 4) & 0xF);
-        vbdHex(1, int(top->count) & 0xF);
-        vbdCycle(i++);
+        // vbdHex(4, (int(top->count) >> 16) & 0xF);
+        // vbdHex(3, (int(top->count) >> 8) & 0xF);
+        // vbdHex(2, (int(top->count) >> 4) & 0xF);
+        // vbdHex(1, int(top->count) & 0xF);
+        // vbdCycle(i++);
 
-        // vbdPlot(int(top->count), 0, 255);
+        vbdPlot(int(top->count), 0, 255);
 
         // test pattern
         top->rst = false;
