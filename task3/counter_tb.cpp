@@ -45,7 +45,7 @@ int main(int argc, char **argv, char **env) {
         vbdCycle(i++);
 
         // step 1 : this part defines the parameter value
-        top->par = vbdValue();
+        //top->par = vbdValue();
 
         // test pattern
         top->rst = false;
