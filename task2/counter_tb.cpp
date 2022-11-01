@@ -42,7 +42,7 @@ int main(int argc, char **argv, char **env) {
         vbdHex(1, int(top->count) & 0xF);
         vbdCycle(i++);
 
-        // vbdPlot(int(top->count), 0, 255);
+        //vbdPlot(int(top->count), 0, 255);
 
         // test pattern
         top->rst = false;
