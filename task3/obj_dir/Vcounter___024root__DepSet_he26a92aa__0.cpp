@@ -11,7 +11,14 @@ VL_INLINE_OPT void Vcounter___024root___sequent__TOP__0(Vcounter___024root* vlSe
     Vcounter__Syms* const __restrict vlSymsp VL_ATTR_UNUSED = vlSelf->vlSymsp;
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vcounter___024root___sequent__TOP__0\n"); );
     // Body
-    vlSelf->count = ((IData)(vlSelf->rst) ? 0U : (IData)(vlSelf->count));
+    vlSelf->count = ((IData)(vlSelf->rst) ? 0U : (0xffU 
+                                                  & (IData)(
+                                                            (0x7fffffffffULL 
+                                                             & ((IData)(vlSelf->en)
+                                                                 ? (QData)((IData)(vlSelf->par))
+                                                                 : 
+                                                                (1ULL 
+                                                                 + (QData)((IData)(vlSelf->count))))))));
 }
 
 void Vcounter___024root___eval(Vcounter___024root* vlSelf) {

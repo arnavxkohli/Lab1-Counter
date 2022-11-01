@@ -25,7 +25,7 @@ int main(int argc, char **argv, char **env) {
     // initiate simulation inputs
     top->clk = 1;
     top->rst = 1;
-    top->en = 0;
+    top->en = vbdFlag();
 
     vbdSetMode(1);
     
@@ -44,10 +44,9 @@ int main(int argc, char **argv, char **env) {
         vbdHex(1, int(top->count) & 0xF);
         vbdCycle(i++);
 
-        // vbdPlot(int(top->count), 0, 255);
-        if (vbdFlag()){
-            top->count = vbdValue();
-        }
+        // step 1 : this part defines the parameter value
+        top->par = vbdValue();
+
         // test pattern
         top->rst = false;
         top->en = vbdFlag();
